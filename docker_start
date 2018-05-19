@@ -6,5 +6,8 @@ docker run --name phoenix-postman \
            -w /opt/app \
            -i \
            -p 4000:4000 \
+           --env-file ./variables.env \
            -t elixir:1.6.0 \
-           /bin/bash -c "useradd -ms /bin/bash docker; su docker"
+           /bin/bash -c "mix local.hex --force; \
+                         mix local.rebar --force; \
+                         bash"
