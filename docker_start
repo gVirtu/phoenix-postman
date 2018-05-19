@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+docker run --name phoenix-postman \
+           --rm \
+           -v "$PWD":/opt/app \
+           -w /opt/app \
+           -i \
+           -p 4000:4000 \
+           -t elixir:1.6.0 \
+           /bin/bash -c "useradd -ms /bin/bash docker; su docker"
