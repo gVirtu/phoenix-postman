@@ -18,6 +18,7 @@
         "lib/phoenix_postman.ex",
         "lib/phoenix_postman_web.ex",
         "lib/phoenix_postman/application.ex",
-        "lib/phoenix_postman_web/endpoint.ex"
+        "lib/phoenix_postman_web/endpoint.ex",
+        "lib/phoenix_postman_web/plug/plug_postman_dump.ex"
     ]
 }

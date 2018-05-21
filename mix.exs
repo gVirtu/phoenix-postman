@@ -19,11 +19,13 @@ defmodule PhoenixPostman.Mixfile do
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
-  def application do
-    [
-      mod: {PhoenixPostman.Application, []},
-      extra_applications: [:logger, :runtime_tools]
-    ]
+  if (Mix.env() in @test_envs) do
+    def application do
+      [
+        mod: {PhoenixPostman.Application, []},
+        extra_applications: [:logger, :runtime_tools]
+      ]
+    end
   end
 
   # Specifies which paths to compile per environment.
@@ -36,9 +38,9 @@ defmodule PhoenixPostman.Mixfile do
   defp deps do
     [
       {:excoveralls, "~> 0.8.2", only: @test_envs},
-      {:phoenix, "~> 1.3.2"},
-      {:postgrex, ">= 0.0.0"},
-      {:cowboy, "~> 1.0"}
+      {:phoenix, "~> 1.3.2", only: @test_envs},
+      {:cowboy, "~> 1.0", only: @test_envs},
+      {:plug, "~> 1.5.1"}
     ]
   end
 end

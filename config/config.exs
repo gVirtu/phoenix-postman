@@ -5,6 +5,13 @@
 # is restricted to this project.
 use Mix.Config
 
+config :phoenix_postman,
+  task_process_name: :phoenix_postman_master,
+  docs_processor: &PhoenixPostman.DefaultProcessor.process_docs/1,
+  docs_regex: ~r/^(?<title>[^\n]*)\n[^\n]*\n(?<description>.*)$/us,
+  test_name_processor: &PhoenixPostman.DefaultProcessor.process_test_name/2,
+  test_name_regex: ~r/\[(?<name>.*)\]/us
+
 # Configures the endpoint
 config :phoenix_postman, PhoenixPostmanWeb.Endpoint,
   url: [host: "localhost"],
